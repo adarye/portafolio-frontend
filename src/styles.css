@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+    /* You can add global styles to this file, and also import other style files */
+
+    .section-cv {
+        position: relative !important;
+        background-color: #222;
+        height: 100%;
+        width: 100%;
+        border-radius: 30px !important;
+        padding: 60px;
+        opacity: inherit !important;
+        visibility: visible !important;
+        overflow-y: scroll;
+    }
+
+    .section-cv::-webkit-scrollbar {
+        width: 25px;
+        height: 30px;
+    }
+
+    .section-cv::-webkit-scrollbar-track {
+        border-radius: 10px;
+        margin: 40px;
+    }
+
+    .section-cv::-webkit-scrollbar-thumb {
+        border: 9px solid rgba(0, 0, 0, 0) !important;
+        background-clip: padding-box;
+        border-radius: 12px !important;
+        background-color: #868686;
+    }
+
+    .menu {
+        background-color: red !important;
+    }
+
+    .header-mobile-cv {
+        position: absolute;
+        width: 100%;
+        max-width: 330px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #444;
+        z-index: 99;
+        padding: 30px 30px 10px;
+        text-align: center;
+        opacity: 1;
+        visibility: visible;
+        overflow: auto;
+        -webkit-transition: all .25s ease-in-out;
+        -moz-transition: all .25s ease-in-out;
+        -o-transition: all .25s ease-in-out;
+        -ms-transition: all .25s ease-in-out;
+        transition: all .25s ease-in-out;
+    }

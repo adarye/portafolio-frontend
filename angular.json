@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "crm"
+    }
+  },
+  "defaultProject": "crm",
+  "cli": {
+    "analytics": "dba8d457-8ac1-42b7-be05-e8764df3cf67"
+  }
 }
