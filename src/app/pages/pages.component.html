@@ -1,7 +1,15 @@
-<app-header></app-header>
-<div class="content-area">
-    <div class="animated-sections">
-
-        <router-outlet></router-outlet>
+<!-- Animated Background -->
+<div class="lm-animated-bg" style="background-image: url(./assets/plugin-cv/img/main_bg.png);"></div>
+<!-- /Animated Background -->
+<div class="page">
+    <div class="page-content">
+        <app-preloader></app-preloader>
+        <app-header>
+        </app-header>
+        <div class="content-area">
+            <div class="animated-sections">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
     </div>
 </div>

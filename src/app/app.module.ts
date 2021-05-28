@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PagesComponent } from './pages/pages.component';
-import { DashboardComponent } from './crm/dashboard/dashboard.component';
 import { ProfileComponent } from './crm/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 
@@ -13,7 +12,6 @@ import { LoginComponent } from './auth/login/login.component';
   declarations: [
     AppComponent,
     PagesComponent,
-    DashboardComponent,
     ProfileComponent,
     LoginComponent
 
