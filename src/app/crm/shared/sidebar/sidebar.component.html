@@ -18,23 +18,23 @@
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">PERSONAL</li>
 
-                <!-- <li *ngFor="let item of _sidebar.menu" routerLinkActive="active">
-                  <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
-                      <i [ngClass]="item.icono"></i>
-                      <span class="hide-menu">
-                          {{ item.titulo }}
+                <li routerLinkActive="active">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
+                        <i></i>
+                        <span class="hide-menu">
+                          Blog
                           <span class="label label-rouded label-themecolor pull-right">
-                              {{ item.submenu.length }}
+                             2
                           </span>
-                      </span>
-                  </a>
+                        </span>
+                    </a>
 
-                  <ul aria-expanded="false" class="collapse">
-                      <li *ngFor="let subMenuItem of item.submenu">
-                          <a [routerLink]="subMenuItem.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> {{ subMenuItem.titulo }} </a>
-                      </li>
-                  </ul>
-              </li> -->
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a routerLink="resume">  Categorias  </a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </nav>

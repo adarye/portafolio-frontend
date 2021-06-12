@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { SettingsService } from './services/crm/settings.service';
 
 
 
@@ -12,8 +13,11 @@ export class AppComponent implements OnInit {
   title = 'crm';
 
 
-  constructor(){
+  constructor(private settingsService:SettingsService){
     // init_plugins();
+    this.settingsService.csrfCookie().subscribe(res=>{
+      console.log(res);
+    })
   }
   ngOnInit(): void {
 

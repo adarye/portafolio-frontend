@@ -8,20 +8,33 @@ import { PagesComponent } from './pages/pages.component';
 import { ProfileComponent } from './crm/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule, HttpClientXsrfModule, HttpXsrfTokenExtractor, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthInterceptor } from './interceptors/httpconfig.interceptors';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     PagesComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
 
   ],
   imports: [
     BrowserModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN', // this is optional
+      headerName: 'X-CSRF-TOKEN' // this is optional
+    })
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

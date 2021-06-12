@@ -1,0 +1,25 @@
+<div class="container">
+    <form [formGroup]="forma" class="mt-4" (ngSubmit)="create()">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input formControlName="name" type="text" class="form-control">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                <div *ngIf="name.errors?.required">
+                    Name is required.
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Description</label>
+            <input formControlName="description" name="description" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Color</label>
+            <input formControlName="color" name="color" type="text" class="form-control">
+        </div>
+        <div class="mb-3 form-check">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

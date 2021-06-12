@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment'
+
+import { HttpClient } from '@angular/common/http';
+
+const url = environment.url;
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +12,7 @@ export class SettingsService {
 
   private linkTheme = document.querySelector('#theme');
 
-  constructor() {
+  constructor(private http:HttpClient) {
 
     const url = localStorage.getItem('theme') || '../../../assets/plugin-crm/css/colors/purple-dark.css';
     this.linkTheme.setAttribute('href', url);
@@ -40,4 +45,7 @@ export class SettingsService {
     });
 
   }
+ csrfCookie(){
+   return this.http.get(`${url}sanctum/csrf-cookie`);
+ }
 }
