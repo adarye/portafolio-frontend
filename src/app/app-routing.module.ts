@@ -24,10 +24,11 @@ const routes: Routes = [
     component: LoginComponent,
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
+  { path: '', redirectTo: 'cv', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,  { useHash: false })],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
