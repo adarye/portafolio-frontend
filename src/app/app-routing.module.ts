@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { CrmComponent } from './crm/crm.component';
 
 import { PagesComponent } from './pages/pages.component';
+import { AuthGuard } from './services/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {
     path: 'crm',
     component: CrmComponent,
+    canActivate: [AuthGuard],
     loadChildren: () => import('./crm/crm.module').then(m => m.CrmModule)
   },
   {

@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
 
   constructor(private settingsService:SettingsService){
     // init_plugins();
-    this.settingsService.csrfCookie().subscribe(res=>{
-      console.log(res);
-    })
+    // this.settingsService.csrfCookie().subscribe((res:any)=>{
+    //   console.log(res);
+    // })
   }
   ngOnInit(): void {
 

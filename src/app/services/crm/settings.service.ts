@@ -46,6 +46,7 @@ export class SettingsService {
 
   }
  csrfCookie(){
-   return this.http.get(`${url}sanctum/csrf-cookie`);
+   return this.http.get(`${url}sanctum/csrf-cookie`, { responseType: 'text' }
+ );
  }
 }

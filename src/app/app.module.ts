@@ -9,7 +9,7 @@ import { ProfileComponent } from './crm/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule, HttpClientXsrfModule, HttpXsrfTokenExtractor, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from './interceptors/httpconfig.interceptors';
 
@@ -29,10 +29,6 @@ import { AuthInterceptor } from './interceptors/httpconfig.interceptors';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientXsrfModule.withOptions({
-      cookieName: 'XSRF-TOKEN', // this is optional
-      headerName: 'X-CSRF-TOKEN' // this is optional
-    })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
