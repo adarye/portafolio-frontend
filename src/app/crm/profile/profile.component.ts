@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Preferencia } from 'src/app/models/preferencia.model';
+import { ProfileService } from 'src/app/services/crm/profile.service';
+import './profile.js'
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  obj:Preferencia = new Preferencia();
+  step:number = 1
+  constructor(private profileService: ProfileService) {
+    this.profileService.get().subscribe(res=>{
+      this.obj = res;
+    })
+   }
 
   ngOnInit(): void {
   }

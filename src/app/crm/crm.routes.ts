@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { CategoriesComponent } from './blog/categories/categories.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const CrmRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'account-settings', component: AccountSettingsComponent },
   { path: 'blog/categories', component: CategoriesComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

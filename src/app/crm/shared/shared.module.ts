@@ -4,6 +4,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +12,8 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
   declarations: [BreadcrumbsComponent, HeaderComponent, SidebarComponent, NopagefoundComponent],
   exports: [HeaderComponent, SidebarComponent, NopagefoundComponent, BreadcrumbsComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

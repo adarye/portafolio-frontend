@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://crm.local/'
+  url: 'http://crm.local/',
+  urlApi: 'http://crm.local/api/'
 };
 
 /*
