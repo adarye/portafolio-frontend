@@ -17,4 +17,8 @@ export class ProfileService {
   get(){
     return this.http.get<Preferencia>(`${url}preferences`);
   }
+  post(obj:Preferencia){
+    return this.http.post<Preferencia>(`${url}preferences`, obj);
+  }
+
 }
