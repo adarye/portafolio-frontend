@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService) {
     this.profileService.get().subscribe(res=>{
       this.obj = res;
+      this.form.patchValue(this.obj);
     })
    }
 
@@ -35,19 +36,27 @@ export class ProfileComponent implements OnInit {
       residence: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')]),
       address: new FormControl(''),
       rol:  new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')]),
-      about: new FormControl('', [Validators.required, Validators.minLength(40), Validators.maxLength(2000), Validators.pattern('^[a-zA-Z ]+$')]),
+      about_me: new FormControl('', [Validators.required, Validators.minLength(40), Validators.maxLength(60)]),
       // make a form control for a pdf file
        cv: new FormControl('', [Validators.pattern('^.*\.pdf$')])
 
     });
   }
   post(){
+     this.step = 1
     console.log(this.form)
     this.obj = this.form.value;
-    this.profileService.post(this.obj).subscribe(res=>{
-      this.step = 2;
+    if(this.form.valid){
+this.profileService.post(this.obj).subscribe(res=>{
+      // this.step = 2;
     })
+    }
+
+
   }
+  get about_me() {
+    return this.form.get('about_me');
+}
 
 
 

@@ -3,7 +3,7 @@
     <div class="row justify-content-center mt-0">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2><strong>Sign Up Your User Account</strong></h2>
+                <h2><strong>User Preferences</strong></h2>
                 <p>Fill all form field to go to next step</p>
 
                 <div class="row">
@@ -21,13 +21,29 @@
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="fs-title">Account Information</h2>
-                                        <input type="email" formControlName="email" name="email" placeholder="Email" />
+                                        <input type="email" formControlName="email" name="email" placeholder="Email" class="email-input" />
+                                        <!-- make an div with error when email formcontrol has any  error -->
+
+                                        <div *ngIf="form.controls.email.hasError('required')" class="form-error text-danger small">This field is required</div>
+                                        <!-- make a div if email formcontro is not valid -->
+                                        <div *ngIf="form.controls.email.invalid && form.controls.email.dirty && !form.controls.email.hasError('required')" class="form-error text-danger small">Please enter a valid email</div>
                                         <input type="text" formControlName="facebook" name="facebook" placeholder="Facebook" />
+
+                                        <div *ngIf="form.controls.facebook.hasError('required')" class="form-error text-danger small">This field is required</div>
+
                                         <input type="text" formControlName="instagram" name="instagram" placeholder="Instagram" />
+
+                                        <div *ngIf="form.controls.instagram.hasError('required')" class="form-error text-danger small">This field is required</div>
+
                                         <input type="text" formControlName="linkedin" name="linkedin" placeholder="Linkedin" />
+
+                                        <div *ngIf="form.controls.linkedin.hasError('required')" class="form-error text-danger small">This field is required</div>
+
                                         <input type="text" formControlName="twitter" name="twitter" placeholder="Twitter" />
                                         <input type="text" formControlName="youtube" name="youtube" placeholder="Youtube" />
                                         <input type="text" formControlName="whatsapp" name="whatsapp" placeholder="WhatsApp" />
+                                        <div *ngIf="form.controls.whatsapp.hasError('required')" class="form-error text-danger small">This field is required</div>
+
                                     </div>
                                     <input type="button" name="next" class="next action-button" value="Next Step" (click)="step = 2" />
                                 </fieldset>
@@ -37,11 +53,26 @@
                                     <div class="form-card">
                                         <h2 class="fs-title">Personal Information</h2>
                                         <input type="text" formControlName="name" name="name" placeholder="Name" />
+                                        <div *ngIf="form.controls.whatsapp.hasError('required')" class="form-error text-danger small">This field is required</div>
+                                        <!-- make a div if formcontrol name doesnt has the min value length -->
+                                        <div *ngIf="form.controls.name.invalid && form.controls.name.dirty && !form.controls.name.hasError('required')" class="form-error text-danger small">Please enter a valid name</div>
                                         <input type="text" formControlName="username" name="username" placeholder="Username" />
+
+                                        <div *ngIf="form.controls.username.hasError('required')" class="form-error text-danger small">This field is required</div>
+                                        <div *ngIf="form.controls.username.invalid && form.controls.username.dirty && !form.controls.username.hasError('required')" class="form-error text-danger small">Please enter a valid username</div>
+
                                         <input type="text" formControlName="age" name="age" placeholder="Age" />
+                                        <div *ngIf="form.controls.age.hasError('required')" class="form-error text-danger small">This field is required</div>
+                                        <div *ngIf="form.controls.age.invalid && form.controls.age.dirty" class="form-error text-danger small">Please enter a valid age</div>
+
                                         <input type="text" formControlName="residence" name="residence" placeholder="Residence" />
+                                        <div *ngIf="form.controls.residence.hasError('required')" class="form-error text-danger small">This field is required</div>
+                                        <div *ngIf="form.controls.residence.invalid && form.controls.residence.dirty && !form.controls.residence.hasError('required')" class="form-error text-danger small">Please enter a valid residence</div>
+
                                         <input type="text" formControlName="address" name="address" placeholder="Address" />
-                                        <input type="text" formControlName="rol" name="rol" placeholder="Rol" />
+                                        <input type="text" form9ontrolName="rol" name="rol" placeholder="Rol" />
+                                        <div *ngIf="form.controls.rol.hasError('required')" class="form-error text-danger small">This field is required</div>
+                                        <div *ngIf="form.controls.rol.invalid && form.controls.rol.dirty && !form.controls.rol.hasError('required')" class="form-error text-danger small">Please enter a valid rol</div>
                                     </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" (click)="step = 3" value="Next Step" />
                                 </fieldset>
                             </div>
@@ -49,9 +80,14 @@
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="fs-title">About me</h2>
-                                        <textarea formControlName="about" name="about" rows="3" placeholder="About me"></textarea>
+                                        <textarea formControlName="about_me" name="about_me" rows="3" placeholder="About me"></textarea>
+                                        <div *ngIf="form.controls.about_me.hasError('required')" class="form-error text-danger small">This field is required</div>
+                                        <!-- make a div if min length is not right -->
+                                        <div *ngIf="form.controls.about_me.hasError('minlength')" class="form-error text-danger small">write more!!</div>
+                                        <div *ngIf="form.controls.about_me.hasError('maxlength')" class="form-error text-danger small">You've written so much</div>
                                         <input type="file" formControlName="cv" name="cv" placeholder="Curriculum Vitae" />
-                                        <button type="submit" name="submit" class="submit action-button" value="Submit">
+                                        <button type="submit" name="submit" class="submit action-button">
+                                          Save
                       </button>
 
                                     </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" (click)="step = 4" value="Confirm" />
