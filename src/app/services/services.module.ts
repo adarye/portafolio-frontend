@@ -6,17 +6,21 @@ import {
   AuthService,
   AuthGuard
 } from './service.index';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarService } from './crm/snackbar.service';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSnackBarModule
   ],
   providers: [SettingsService,
     ProfileService,
     AuthService,
+    SnackbarService,
     AuthGuard]
 })
 export class ServicesModule { }

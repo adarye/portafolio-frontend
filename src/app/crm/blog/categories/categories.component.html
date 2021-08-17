@@ -1,27 +1,70 @@
 <div class="container">
-    <form [formGroup]="forma" class="mt-4" (ngSubmit)="create()">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Name</label>
-            <a routerLink="/">esto es un ejemplo</a>
-            <input formControlName="name" type="text" class="form-control">
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" class="mt-4" (ngSubmit)="create()">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input formControlName="name" type="text" class="form-control">
+                        <div *ngIf="form.controls.name.touched && form.controls.name.invalid" class="text-danger mt-2">
 
-                <div *ngIf="name.errors?.required">
-                    Name is required.
+                            <div *ngIf="form.controls.name.hasError('required')">
+                                Name is required.
+                            </div>
+                            <div *ngIf="form.controls.name.hasError('minlength')">
+                                Name is too short.
+                            </div>
+                            <div *ngIf="form.controls.name.hasError('maxlength')">
+                                Name is too long.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1" class="form-label">Description</label>
+                        <input formControlName="description" name="description" type="text" class="form-control">
+                        <div *ngIf="form.controls.description.touched && form.controls.description.invalid" class="text-danger mt-2">
+
+                            <div *ngIf="form.controls.description.hasError('required')">
+                                Description is required.
+                            </div>
+                            <div *ngIf="form.controls.description.hasError('minlength')">
+                                Description is too short.
+                            </div>
+                            <div *ngIf="form.controls.description.hasError('maxlength')">
+                                Description is too long.
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1" class="form-label">Color</label>
+                        <input formControlName="color" name="color" type="text" class="form-control">
+                        <div *ngIf="form.controls.color.touched && form.controls.color.invalid" class="text-danger mt-2">
+
+                            <div *ngIf="form.controls.color.hasError('required')">
+                                Color is required.
+                            </div>
+                            <div *ngIf="form.controls.color.hasError('minlength')">
+                                Color is too short.
+                            </div>
+                            <div *ngIf="form.controls.color.hasError('maxlength')">
+                                Color is too long.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-light mt-4 mr-2">Cancel</button>
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Description</label>
-            <input formControlName="description" name="description" type="text" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Color</label>
-            <input formControlName="color" name="color" type="text" class="form-control">
-        </div>
-        <div class="mb-3 form-check">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
+</div>
+<div>
+    <app-data-table [paginate]="paginate" [fieldShow]="['Id','Name', 'Description', 'Color']" (get)="goPage($event)"></app-data-table>
 </div>

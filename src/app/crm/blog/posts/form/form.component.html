@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>New post</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form" class="mt-4" (ngSubmit)="create()">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="title" class="form-label">Title</label>
+                <input formControlName="title" type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="image" class="form-label">Image</label>
+                <input name="image" formControlName="image" type="file" class="form-control" (change)="getBase64($event)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="category" class="form-label">Category</label>
+                <select name="category" id="" formControlName="id_category" class="form-control">
+                <option value="">Select category</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+            </div>
+            <div class="col-md-6">
+                <label for="category" class="form-label" style="display: block;">State</label>
+                <div class="form-check form-check-inline">
+                    <input formControlName="state" class="form-check-input" id="inlineRadio1" type="radio" value="1">
+                    <label class="form-check-label" for="inlineRadio1">Active</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input formControlName="state" class="form-check-input" id="inlineRadio2" type="radio" value="2">
+                    <label class="form-check-label" for="inlineRadio2">Inactive</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1" class="form-label">content</label>
+                <textarea formControlName="content" name="content" type="text" class="form-control" rows="6">
+                </textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-light mt-4 mr-2">Cancel</button>
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        </div>
+    </form>
+</div>
