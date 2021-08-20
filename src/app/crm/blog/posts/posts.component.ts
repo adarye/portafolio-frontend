@@ -13,6 +13,7 @@ import { FormComponent } from './form/form.component';
 })
 export class PostsComponent implements OnInit {
   paginate: any = {};
+  obj:any = [];
   constructor(private readonly fb: FormBuilder, private blogService: BlogService, private router: Router, private dialog: MatDialog) {
     this.getQueries().subscribe((data) => {
       this.get(data.page);
@@ -32,7 +33,7 @@ export class PostsComponent implements OnInit {
     this.dialog.open(FormComponent, {
       height: '400px',
       width: '600px',
-      data: { animal: ''}
+      data: { obj: this.obj}
 
     });
   }

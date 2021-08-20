@@ -11,10 +11,10 @@ import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 export class DataTableComponent implements OnInit, OnChanges {
   @Input() fieldShow: any = [];
   @Input() paginate: any = {};
+  @Input() obj: any = [];
   @Output() get: any = new EventEmitter();
   list: any = [];
   fields: any = [];
-
   //PAGINATE
 
   from: number = 0;
@@ -79,6 +79,17 @@ export class DataTableComponent implements OnInit, OnChanges {
   }
   aleatoryPage(page:number){
     this.get.emit(page);
+  }
+  add(event, item) {
+    this.obj.filter(x => x.id === item.id).length > 0 ? this.obj.splice(this.obj.indexOf(item), 1) : this.obj.push(item);
+  }
+  isChecked(item){
+    if(this.obj.filter(x => x.id == item.id).length > 0){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
 }

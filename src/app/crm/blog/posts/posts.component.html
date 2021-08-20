@@ -1,23 +1,11 @@
-<div class="shadow-sm p-3 mb-5 bg-white rounded">
-    <button class="btn btn-primary" (click)="openModal()">
-New
-</button>
+<div class="container">
+    <div class="button-wrapper mr-5">
+        <button class="button btn  btn-primary "><i class="fa fa-edit"></i></button>
+    </div>
+    <div class="button-wrapper">
+        <button class="button btn  btn-danger"><i class="fa fa-trash"></i></button>
+    </div>
+
+
+    <app-data-table [paginate]="paginate" [(obj)]="obj" [fieldShow]="['Id','Title', 'Image', 'Content']" (get)="goPage($event)"></app-data-table>
 </div>
-<div class="contenedor">
-    <button class="botonF1">
-<span>+</span>
-</button>
-    <button class="btn botonF2">
-<span>+</span>
-</button>
-    <button class="btn botonF3">
-<span>+</span>
-</button>
-    <button class="btn botonF4">
-<span>+</span>
-</button>
-    <button class="btn botonF5">
-<span>+</span>
-</button>
-</div>
-<app-data-table [paginate]="paginate" [fieldShow]="['Id','Title', 'Image', 'Content']" (get)="goPage($event)"></app-data-table>

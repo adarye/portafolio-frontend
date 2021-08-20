@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { BlogCategory } from 'src/app/models/blog-category';
 import { BlogService } from 'src/app/services/crm/blog.service';
 import { SnackbarService } from 'src/app/services/crm/snackbar.service';
@@ -12,11 +12,11 @@ import { SnackbarService } from 'src/app/services/crm/snackbar.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  @Input() data: any = { animal: '' };
   form: FormGroup;
   image64: string = ''
   categories: BlogCategory[] = [];
-  constructor(private readonly fb: FormBuilder, private blogService: BlogService, private snackbarService: SnackbarService, public dialog: MatDialog) {
+  constructor(private readonly fb: FormBuilder, private blogService: BlogService, private snackbarService: SnackbarService,
+    public dialog: MatDialog,  @Inject(MAT_DIALOG_DATA) public data: any) {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
       image: ['', [Validators.pattern('^.*\.jpeg$')]],
@@ -24,6 +24,7 @@ export class FormComponent implements OnInit {
       state: [1, [Validators.required]],
       content: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(1000)]]
     });
+    this.loadForm();
     this.getCategories();
   }
 
@@ -32,13 +33,22 @@ export class FormComponent implements OnInit {
 
   create() {
     if (this.form.valid) {
-      this.form.value.image = this.image64;
-      console.log(this.form.value)
-      this.blogService.createPost(this.form.value).subscribe((res) => {
-        this.snackbarService.openSnackBar('end', 'top', 5, 'Post Created Successfully');
-        this.form.reset();
-         this.dialog.closeAll();
-      })
+
+      let message = ''
+      if(this.data.obj.length > 0){
+           this.blogService.updatePost(this.data.obj[0].id, this.form.value).subscribe(res=>{
+             message = 'Post updated successfully!'
+             this.sendMessage(message)
+           })
+      }
+      else{
+        this.blogService.createPost(this.form.value).subscribe((res) => {
+          message = 'Post created successfully!';
+         this.sendMessage(message)
+
+        })
+      }
+
     }
     else {
       var BreakException = {};
@@ -55,6 +65,22 @@ export class FormComponent implements OnInit {
       });
     }
   }
+  sendMessage(message) {
+    this.snackbarService.openSnackBar('end', 'top', 5, message);
+    this.form.reset();
+    this.dialog.closeAll();
+  }
+  loadForm(){
+    if(this.data.obj.length > 0){
+      if(this.data.obj.length > 1){
+
+      }
+      else{
+        this.form.patchValue(this.data.obj[0]);
+      }
+
+    }
+  }
   getCategories() {
     this.blogService.getCategories(1).subscribe((res: any) => {
       this.categories = res.data;
@@ -69,6 +95,7 @@ export class FormComponent implements OnInit {
     let base64;
     reader.onload = (e: any) => {
       this.image64 = e.target.result;
+      this.form.value.image = this.image64;
     };
     reader.onerror = function (error) {
       console.log('Error: ', error);
