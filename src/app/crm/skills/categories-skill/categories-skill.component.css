@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  /* height: 200vh; */
+  /* for scrolling demo */
+  margin: 0 auto;
+  background-color: white;
+}
+
+.button-wrapper {
+  position: absolute;
+  right: 150px;
+  /* button width plus margin */
+  top: 55%;
+  /* or whatever you need */
+}
+
+.button {
+  position: fixed;
+  cursor: pointer;
+  z-index: 3000;
+}

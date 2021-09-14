@@ -10,12 +10,15 @@ import { CategoriesComponent } from './blog/categories/categories.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { PostsComponent } from './blog/posts/posts.component';
+import { CategoriesSkillComponent } from './skills/categories-skill/categories-skill.component';
+import { SkillComponent } from './skills/skill/skill.component';
+import { FormComponent } from './skills/skill/form/form.component';
 // import { FormComponent } from './blog/posts/form/form.component';
 
 
 
 @NgModule({
-  declarations: [CrmComponent, DashboardComponent, AccountSettingsComponent, CategoriesComponent, ProfileComponent,  PostsComponent],
+  declarations: [CrmComponent, DashboardComponent, AccountSettingsComponent, CategoriesComponent, ProfileComponent,  PostsComponent, CategoriesSkillComponent, SkillComponent, FormComponent],
   imports: [
     CommonModule, CrmRoutingModule, SharedModule, FormsModule, ReactiveFormsModule
   ],

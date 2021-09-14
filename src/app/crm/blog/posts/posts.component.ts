@@ -14,9 +14,11 @@ import { FormComponent } from './form/form.component';
 export class PostsComponent implements OnInit {
   paginate: any = {};
   obj:any = [];
+  currentPage:number;
   constructor(private readonly fb: FormBuilder, private blogService: BlogService, private router: Router, private dialog: MatDialog) {
     this.getQueries().subscribe((data) => {
       this.get(data.page);
+      this.currentPage = data.page;
     })
   }
 
@@ -29,12 +31,21 @@ export class PostsComponent implements OnInit {
       console.log(res.data)
     })
   }
+  destroy(){
+    this.blogService.deletePost(this.obj[0].id).subscribe((res) => {
+
+    })
+  }
   openModal(){
-    this.dialog.open(FormComponent, {
+    const dialogRef = this.dialog.open(FormComponent, {
       height: '400px',
       width: '600px',
       data: { obj: this.obj}
 
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.get(this.currentPage);
     });
   }
   getQueries() {

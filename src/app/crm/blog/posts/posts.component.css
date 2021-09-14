@@ -8,9 +8,9 @@
 
 .button-wrapper {
     position: absolute;
-    right: 80px;
+    right: 150px;
     /* button width plus margin */
-    top: 75%;
+    top: 55%;
     /* or whatever you need */
 }
 

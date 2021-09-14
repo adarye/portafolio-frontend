@@ -19,7 +19,8 @@ export class FormComponent implements OnInit {
     public dialog: MatDialog,  @Inject(MAT_DIALOG_DATA) public data: any) {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
-      image: ['', [Validators.pattern('^.*\.jpeg$')]],
+      // image: ['', [Validators.pattern('^.*\.jpeg$')]],
+      image: [''],
       id_category: ['', [Validators.required]],
       state: [1, [Validators.required]],
       content: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(1000)]]
@@ -32,6 +33,9 @@ export class FormComponent implements OnInit {
   }
 
   create() {
+    this.form.value.image = this.image64;
+    console.log(this.form.value);
+    console.log(this.data);
     if (this.form.valid) {
 
       let message = ''
@@ -95,7 +99,6 @@ export class FormComponent implements OnInit {
     let base64;
     reader.onload = (e: any) => {
       this.image64 = e.target.result;
-      this.form.value.image = this.image64;
     };
     reader.onerror = function (error) {
       console.log('Error: ', error);

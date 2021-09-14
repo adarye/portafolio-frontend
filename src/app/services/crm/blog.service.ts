@@ -30,4 +30,7 @@ export class BlogService {
   updatePost(id: number, obj: Post) {
     return this.http.put(url + `posts/${id}`, obj);
   }
+  deletePost(id: number) {
+    return this.http.delete(url + `posts/${id}`);
+  }
 }

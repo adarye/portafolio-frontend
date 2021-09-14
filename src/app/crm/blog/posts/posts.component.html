@@ -1,9 +1,12 @@
 <div class="container">
+    <div class="button-wrapper mr-2">
+        <button class="button btn  btn-primary" (click)="openModal()"><i class="fa fa-plus"></i></button>
+    </div>
     <div class="button-wrapper mr-5">
-        <button class="button btn  btn-primary "><i class="fa fa-edit"></i></button>
+        <button class="button btn  btn-primary" style="right: 100px" (click)="openModal()"><i class="fa fa-edit"></i></button>
     </div>
     <div class="button-wrapper">
-        <button class="button btn  btn-danger"><i class="fa fa-trash"></i></button>
+        <button class="button btn  btn-danger" style="right: 60px" (click)="destroy()"><i class="fa fa-trash"></i></button>
     </div>
 
 
