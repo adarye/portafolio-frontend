@@ -7,6 +7,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { PostsComponent } from './blog/posts/posts.component';
 import { CategoriesSkillComponent } from './skills/categories-skill/categories-skill.component';
 import { SkillComponent } from './skills/skill/skill.component';
+import { CategoriesResumeComponent } from './resume/categories-resume/categories-resume.component';
+import { ExperienceComponent } from './resume/experience/experience.component';
+import { FunFactsComponent } from './fun-facts/fun-facts.component';
 
 
 const CrmRoutes: Routes = [
@@ -17,6 +20,9 @@ const CrmRoutes: Routes = [
   { path: 'blog/posts', component: PostsComponent, data: {title: 'Blog Posts'} },
   { path: 'skill/categories', component: CategoriesSkillComponent, data: {title: 'Skill Categories'} },
   { path: 'skills', component: SkillComponent, data: {title: 'Skills'} },
+  { path: 'resume/categories', component: CategoriesResumeComponent, data: {title: 'Resume Categories'} },
+  { path: 'experience', component: ExperienceComponent, data: {title: 'Experience'} },
+  { path: 'fun-facts', component: FunFactsComponent, data: {title: 'Fun Facts'} },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
 ]

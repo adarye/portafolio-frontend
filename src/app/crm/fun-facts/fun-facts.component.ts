@@ -1,46 +1,37 @@
-import { ElementRef } from '@angular/core';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { filter, map } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivationEnd, Router } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { FunFact } from 'src/app/models/fun-facts';
 import { Paginate } from 'src/app/models/paginate';
-import { Skill } from 'src/app/models/skill';
+import { FunFactsService } from 'src/app/services/crm/fun-facts.service';
 import { SnackbarService } from 'src/app/services/crm/snackbar.service';
-import { SkillsService } from './../../../services/crm/skills.service';
-import { FormComponent } from './form/form.component';
+import { FormComponent } from '../resume/experience/form/form.component';
 
 @Component({
-  selector: 'app-skill',
-  templateUrl: './skill.component.html',
-  styleUrls: ['./skill.component.css']
+  selector: 'app-fun-facts',
+  templateUrl: './fun-facts.component.html',
+  styleUrls: ['./fun-facts.component.css']
 })
-export class SkillComponent implements OnInit {
-
+export class FunFactsComponent implements OnInit {
   paginate: Paginate = {};
-  obj: Skill[] = [];
-  enableForm: boolean = false;
-  @ViewChild('openModal') openModal: ElementRef;
+obj:FunFact[] = [];
+  constructor(private funFactsService:FunFactsService, private dialog: MatDialog, private snackbarService:SnackbarService, private router: Router) { }
 
-  constructor(private skillService: SkillsService, private router: Router, private dialog: MatDialog, private snackbarService:SnackbarService) {
+  ngOnInit(): void {
     this.getQueries().subscribe((data) => {
       // data.page = 5;
       this.get(data.page);
     })
   }
-
-  ngOnInit(): void {
-  }
   get(page: number) {
-    this.skillService.getSkills(page).subscribe((res: Paginate) => {
+    this.funFactsService.get(page).subscribe((res: Paginate) => {
       this.paginate = res;
     });
   }
-  goPage(page: number) {
-    this.router.navigate(['crm/skills'], { queryParams: { page: page } });
-  }
   showForm() {
     const dialogRef = this.dialog.open(FormComponent, {
-      height: '250px',
+      height: '400px',
       width: '600px',
       data: { obj: this.obj }
 
@@ -51,7 +42,7 @@ export class SkillComponent implements OnInit {
     });
   }
   deleteSkill() {
-    this.skillService.deleteSkill(this.obj[0].id).subscribe((res) => {
+    this.funFactsService.delete(this.obj[0].id).subscribe((res) => {
       this.snackbarService.openSnackBar('end', 'top', 5, 'Skill deleted successfully');
       this.get(this.paginate.current_page);
     }
@@ -62,6 +53,9 @@ export class SkillComponent implements OnInit {
       .pipe(filter((event) => event instanceof ActivationEnd))
       .pipe(filter((event: ActivationEnd) => event.snapshot.firstChild === null)).pipe
       (map((event: ActivationEnd) => event.snapshot.queryParams));
+  }
+  goPage(page: number) {
+    this.router.navigate(['crm/resumes'], { queryParams: { page: page } });
   }
 
 }

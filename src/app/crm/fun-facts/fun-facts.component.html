@@ -7,8 +7,4 @@
 <button type="button" class="btn btn-light" (click)="deleteSkill()">
   Delete
 </button>
-<div>
-  <div>
-    <app-data-table [paginate]="paginate" [orderList]="['id', 'name', 'description', 'level', 'id_category']" [fieldShow]="['Id','Name', 'Descripton', 'Level', 'Category']" (get)="goPage($event)" [(obj)]="obj"></app-data-table>
-</div>
-</div>
+<app-data-table [paginate]="paginate" [orderList]="['id', 'name', 'description', 'icon']" [fieldShow]="['Id','Name', 'Descripton', 'Icon']" (get)="goPage($event)" [(obj)]="obj"></app-data-table>

@@ -12,13 +12,18 @@ import { ProfileComponent } from './profile/profile.component';
 import { PostsComponent } from './blog/posts/posts.component';
 import { CategoriesSkillComponent } from './skills/categories-skill/categories-skill.component';
 import { SkillComponent } from './skills/skill/skill.component';
-import { FormComponent } from './skills/skill/form/form.component';
-// import { FormComponent } from './blog/posts/form/form.component';
+import { FormComponent as FormComponentResume } from './resume/experience/form/form.component'
+import { FormComponent as FormComponentSkill } from './skills/skill/form/form.component'
+import { CategoriesResumeComponent } from './resume/categories-resume/categories-resume.component';
+import { ExperienceComponent } from './resume/experience/experience.component';
+ import { FormComponent as FormComponentPost } from './blog/posts/form/form.component';
+import { FunFactsComponent } from './fun-facts/fun-facts.component';
+import { FormComponent as FormComponentFacts } from './fun-facts/form/form.component';
 
 
 
 @NgModule({
-  declarations: [CrmComponent, DashboardComponent, AccountSettingsComponent, CategoriesComponent, ProfileComponent,  PostsComponent, CategoriesSkillComponent, SkillComponent, FormComponent],
+  declarations: [CrmComponent, DashboardComponent, AccountSettingsComponent, CategoriesComponent, ProfileComponent,  PostsComponent, CategoriesSkillComponent, SkillComponent, CategoriesResumeComponent, ExperienceComponent, FormComponentSkill, FormComponentResume, FormComponentPost, FunFactsComponent, FormComponentFacts],
   imports: [
     CommonModule, CrmRoutingModule, SharedModule, FormsModule, ReactiveFormsModule
   ],

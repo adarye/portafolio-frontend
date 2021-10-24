@@ -13,8 +13,11 @@ export class DataTableComponent implements OnInit, OnChanges {
   @Input() paginate: any = {};
   @Input() obj: any = [];
   @Output() get: any = new EventEmitter();
+  @Input() orderList: any = [];
+
   list: any = [];
   fields: any = [];
+
   //PAGINATE
 
   from: number = 0;
@@ -30,7 +33,8 @@ export class DataTableComponent implements OnInit, OnChanges {
 
   }
   getValue(item, i: number) {
-    let field = this.fields[i];
+    // let field = this.fields[i];
+    let field = this.orderList[i];
     return item[field];
 
   }
@@ -55,7 +59,12 @@ export class DataTableComponent implements OnInit, OnChanges {
       this.getNumbers();
     }
   }
+order(){
+for(let i = 0; i < this.orderList.length; i++){
+  let field = this.fieldShow[i];
 
+}
+}
   nextPage() {
     let page = this.current_page + 1;
     this.get.emit(page);

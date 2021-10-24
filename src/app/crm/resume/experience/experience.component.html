@@ -1,0 +1,10 @@
+<button type="button" class="btn btn-primary"  (click)="showForm()">
+  Create
+</button>
+<button type="button" class="btn btn-info" (click)="showForm()">
+  Edit
+</button>
+<button type="button" class="btn btn-light" (click)="deleteSkill()">
+  Delete
+</button>
+<app-data-table [paginate]="paginate" [orderList]="['id', 'rol', 'description', 'country', 'beginning_date', 'final_date', 'id_category']" [fieldShow]="['Id','Rol', 'Descripton', 'Country', 'Beginning Date', 'Final Date', 'Category']" (get)="goPage($event)" [(obj)]="obj"></app-data-table>
