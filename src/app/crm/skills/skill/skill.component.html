@@ -9,6 +9,6 @@
 </button>
 <div>
   <div>
-    <app-data-table [paginate]="paginate" [orderList]="['id', 'name', 'description', 'level', 'id_category']" [fieldShow]="['Id','Name', 'Descripton', 'Level', 'Category']" (get)="goPage($event)" [(obj)]="obj"></app-data-table>
+    <app-data-table [paginate]="paginate" [orderList]="['id', 'name', 'description', 'level', 'id_category']" [orderList]="['id', 'name', 'description', 'level', 'id_category']" [fieldShow]="['Id','Name', 'Descripton', 'Level', 'Category']" (get)="goPage($event)" [(obj)]="obj"></app-data-table>
 </div>
 </div>

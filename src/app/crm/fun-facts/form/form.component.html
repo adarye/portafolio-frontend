@@ -1,1 +1,25 @@
-<p>form works!</p>
+<div>
+  <div class="modal-header">
+    <h3>Create Resume</h3>
+  </div>
+<form [formGroup]="form" class="form mt-4" (ngSubmit)="submit()">
+  <div class="row  mb-2">
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Name" formControlName="name">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Icon" formControlName="icon">
+    </div>
+  </div>
+  <div class="row  mb-2">
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Description" formControlName="description">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" >Save changes</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  </div>
+</form>
+</div>
+

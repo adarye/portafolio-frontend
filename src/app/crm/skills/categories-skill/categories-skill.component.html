@@ -73,5 +73,5 @@
   </div>
 </div>
 <div>
-  <app-data-table [paginate]="paginate" [fieldShow]="['Id','Name', 'Description', 'Color']" (get)="goPage($event)" [(obj)]="obj"></app-data-table>
+  <app-data-table [paginate]="paginate" [orderList]="['id', 'name', 'description', 'color']" [fieldShow]="['Id','Name', 'Description', 'Color']" (get)="goPage($event)" [(obj)]="obj"></app-data-table>
 </div>

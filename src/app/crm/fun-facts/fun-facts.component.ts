@@ -6,7 +6,7 @@ import { FunFact } from 'src/app/models/fun-facts';
 import { Paginate } from 'src/app/models/paginate';
 import { FunFactsService } from 'src/app/services/crm/fun-facts.service';
 import { SnackbarService } from 'src/app/services/crm/snackbar.service';
-import { FormComponent } from '../resume/experience/form/form.component';
+import { FormComponent } from '../fun-facts/form/form.component';
 
 @Component({
   selector: 'app-fun-facts',
@@ -15,14 +15,16 @@ import { FormComponent } from '../resume/experience/form/form.component';
 })
 export class FunFactsComponent implements OnInit {
   paginate: Paginate = {};
-obj:FunFact[] = [];
-  constructor(private funFactsService:FunFactsService, private dialog: MatDialog, private snackbarService:SnackbarService, private router: Router) { }
-
-  ngOnInit(): void {
+  obj: FunFact[] = [];
+  constructor(private funFactsService: FunFactsService, private dialog: MatDialog, private snackbarService: SnackbarService, private router: Router) {
     this.getQueries().subscribe((data) => {
       // data.page = 5;
       this.get(data.page);
     })
+   }
+
+  ngOnInit(): void {
+
   }
   get(page: number) {
     this.funFactsService.get(page).subscribe((res: Paginate) => {
@@ -31,8 +33,8 @@ obj:FunFact[] = [];
   }
   showForm() {
     const dialogRef = this.dialog.open(FormComponent, {
-      height: '400px',
-      width: '600px',
+      height: '300px',
+      width: '500px',
       data: { obj: this.obj }
 
     });
@@ -55,7 +57,7 @@ obj:FunFact[] = [];
       (map((event: ActivationEnd) => event.snapshot.queryParams));
   }
   goPage(page: number) {
-    this.router.navigate(['crm/resumes'], { queryParams: { page: page } });
+    this.router.navigate(['crm/fun-facts'], { queryParams: { page: page } });
   }
 
 }
