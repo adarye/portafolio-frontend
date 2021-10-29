@@ -4,8 +4,8 @@
             <img src="../../../assets/plugin-cv/img/main_photo.jpg" alt="Alex Smith">
         </div>
         <div class="header-titles">
-            <h2>Alex Smith</h2>
-            <h4>Web Designer</h4>
+            <h2>{{obj.name}}</h2>
+            <h4>{{obj.rol}}</h4>
         </div>
     </div>
 
@@ -13,9 +13,9 @@
 
     <div class="social-links">
         <ul>
-            <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a [href]="obj.linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            <li><a [href]="obj.facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a [href]="obj.instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
         </ul>
     </div>
 
@@ -23,7 +23,7 @@
         <a href="#" target="_blank" class="btn btn-primary">Download CV</a>
     </div>
 
-    <div class="copyrights">© 2020 All rights reserved.</div>
+    <div class="copyrights">© {{date | date: 'yyyy' }} All rights reserved.</div>
 </header>
 
 

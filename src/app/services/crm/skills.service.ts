@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Paginate } from 'src/app/models/paginate';
 import { Skill } from 'src/app/models/skill';
 import { SkillCategory } from 'src/app/models/skill-category';
 import { environment } from 'src/environments/environment';
@@ -19,7 +20,7 @@ export class SkillsService {
     return this.http.post(url + 'skill-categories', obj);
   }
   getSkills(page:number = 0){
-    return this.http.get(url + 'skills?page=' + page);
+    return this.http.get<Paginate>(url + 'skills?page=' + page);
   }
   createSkill(obj:Skill) {
 return this.http.post(url + 'skills', obj);

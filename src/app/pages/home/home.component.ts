@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Preferencia } from 'src/app/models/preferencia.model';
+import { ProfileService } from 'src/app/services/service.index';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
-    console.log('Soy el home');
+  obj:Preferencia = {}
+  constructor(private profileService:ProfileService) {
+    this.profileService.get().subscribe(res=>{
+      this.obj = res;
+    })
   }
 
   ngOnInit(): void {
