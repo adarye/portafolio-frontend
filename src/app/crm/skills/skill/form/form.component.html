@@ -37,7 +37,8 @@
             <div class="row form-group">
               <div class="col-md-6">
                 <label for="exampleFormControlInput1" >Level</label>
-                  <input type="range" class="custom-range form-control" min="0" max="5" id="customRange2" formControlName="level">
+                <div class="form-group">
+                  <input type="range" class="form-control-range" min="1" max="10"  formControlName="level" step="1">
                   <div *ngIf="form.controls.level.touched && form.controls.level.invalid" class="text-danger mt-2">
 
                     <div *ngIf="form.controls.level.hasError('required')">
@@ -49,6 +50,7 @@
                      Level is funny.
                     </div>
                 </div>
+              </div>
               </div>
               <div class="col-md-6">
                 <select name="" id="" class="form-control" formControlName="id_category">

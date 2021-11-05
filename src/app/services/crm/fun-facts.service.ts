@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FunFact } from 'src/app/models/fun-facts';
+import { Paginate } from 'src/app/models/paginate';
 import { environment } from 'src/environments/environment';
 
 const url = environment.urlApi
@@ -12,7 +13,7 @@ export class FunFactsService {
   constructor(private http:HttpClient) { }
 
   get(page:number){
-    return this.http.get(url + `fun-facts?page=${page}`);
+    return this.http.get<Paginate>(url + `fun-facts?page=${page}`);
  }
  delete(id:number){
    return this.http.delete(url + `fun-facts/${id}`);

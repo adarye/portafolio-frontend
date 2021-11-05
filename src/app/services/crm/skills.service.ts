@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CategoriesWithSkills } from 'src/app/models/categories-with-skills';
 import { Paginate } from 'src/app/models/paginate';
 import { Skill } from 'src/app/models/skill';
 import { SkillCategory } from 'src/app/models/skill-category';
@@ -30,5 +31,10 @@ return this.http.post(url + 'skills', obj);
   }
   deleteSkill(id:number){
     return this.http.delete(url + 'skills/' + id);
+  }
+
+  //PUBLIC API
+  getSkillsWithCategories(){
+    return this.http.get<CategoriesWithSkills[]>(url + 'public/skill-categories/get-categories-with-skills');
   }
 }

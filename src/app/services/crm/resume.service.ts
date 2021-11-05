@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ResumeCategory } from 'src/app/models/resume-category';
 import { environment } from 'src/environments/environment';import { Resume } from 'src/app/models/resume';
+import { Paginate } from 'src/app/models/paginate';
+import { CategoriesWithResumes } from 'src/app/models/categories-with-resume';
 
 const url = environment.urlApi
 
@@ -23,7 +25,7 @@ export class ResumeService {
   }
 
   getResumes(page:number){
-     return this.http.get(url + `resumes?page=${page}`);
+     return this.http.get<Paginate>(url + `resumes?page=${page}`);
   }
   deleteResume(id:number){
     return this.http.delete(url + `resumes/${id}`);
@@ -33,6 +35,12 @@ export class ResumeService {
   }
   createResume(obj:Resume){
     return this.http.post(url + `resumes`, obj)
+  }
+
+
+  //PUBLIC API
+  getCategoriesWithResumes(){
+    return this.http.get<CategoriesWithResumes[]>(url + `public/resume-categories/get-categories-with-resume`);
   }
 
 }
