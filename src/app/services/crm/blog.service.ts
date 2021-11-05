@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Paginate } from 'src/app/models/paginate';
 import { Post } from 'src/app/models/post';
 import { environment } from 'src/environments/environment';
 import { BlogCategory } from '../../models/blog-category';
@@ -22,7 +23,7 @@ export class BlogService {
   }
 
   getPosts(page: number) {
-    return this.http.get(url + `posts?page=${page}`);
+    return this.http.get<Paginate>(url + `posts?page=${page}`);
   }
   createPost(obj: Post) {
     return this.http.post(url + `posts`, obj);
