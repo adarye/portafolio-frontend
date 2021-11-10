@@ -1,0 +1,71 @@
+
+<div class="single-page-area">
+  <div class="single-page-content">
+
+    <article class="post" *ngIf="obj">
+
+      <div class="post-thumbnail">
+        <img [src]="urlFiles +'/images/posts/'+ obj.image" alt="image">
+      </div>
+
+      <div class="post-content">
+        <!-- /Entry header -->
+        <header class="entry-header">
+          <!-- Entry meta -->
+          <div class="entry-meta entry-meta-top">
+            <span><a href="#" rel="category tag">{{obj.category.name}}</a></span>
+          </div>
+          <!-- /Entry meta -->
+
+          <h2 class="entry-title">{{obj.title}}</h2>
+        </header>
+        <!-- /Entry header -->
+
+        <!-- Entry content -->
+        <div class="entry-content">
+          <div class="row">
+            <div class=" col-xs-12 col-sm-12 ">
+              <div class="col-inner">
+                <p>{{obj.content}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Entry content -->
+
+        <div class="entry-meta entry-meta-bottom">
+          <div class="date-author">
+            <span class="entry-date">
+              <a href="#" rel="bookmark">
+                <i class="far fa-clock"></i> <span class="entry-date">{{obj.created_at | date}}</span>
+              </a>
+            </span>
+          </div>
+
+          <!-- Share Buttons -->
+          <div class="entry-share btn-group share-buttons">
+            <a href="#"  class="btn" target="_blank" title="Share on Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+
+            <a href="#"  class="btn" target="_blank" title="Share on Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+
+            <a href="#"  class="btn" title="Share on LinkedIn">
+              <i class="fa fa-whatsapp"></i>
+            </a>
+          </div>
+          <!-- /Share Buttons -->
+        </div>
+
+        <div class="post-tags" *ngIf="listCategories.length > 0">
+          <div class="tags">
+            <a href="#" rel="tag" *ngFor="let item of listCategories">{{item.name}}</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>

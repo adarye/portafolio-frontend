@@ -16,7 +16,7 @@ export class BlogService {
 
   }
   getCategories(page: number = 0) {
-    return this.http.get(url + `posts-categories?page=${page}`);
+    return this.http.get<Paginate>(url + `posts-categories?page=${page}`);
   }
   createCategory(obj: BlogCategory) {
     return this.http.post(url + 'posts-categories', obj);
@@ -33,5 +33,8 @@ export class BlogService {
   }
   deletePost(id: number) {
     return this.http.delete(url + `posts/${id}`);
+  }
+  showPost(id: number) {
+    return this.http.get<Post>(url + `posts/${id}`);
   }
 }

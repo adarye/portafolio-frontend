@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   url: 'http://crm.local/',
-  urlApi: 'http://crm.local/api/'
+  urlApi: 'http://crm.local/api/',
+  urlFiles: 'http://crm.local/theme/'
 };
 
 /*

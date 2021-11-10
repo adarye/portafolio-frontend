@@ -1,1 +1,100 @@
-<p>contact works!</p>
+  <!-- Contact Subpage -->
+  <section data-id="contact" class="section-cv animated-section animated-section-moveFromLeft">
+    <div class="page-title">
+      <h2>Contact</h2>
+    </div>
+
+    <div class="section-content">
+
+      <div class="row">
+        <!-- Contact Info -->
+        <div class="col-xs-12 col-sm-4">
+          <div class="lm-info-block gray-default">
+            <i class="lnr lnr-map-marker"></i>
+            <h4>{{objPreference.residence}}</h4>
+            <span class="lm-info-block-value"></span>
+            <span class="lm-info-block-text"></span>
+          </div>
+
+          <div class="lm-info-block gray-default">
+            <i class="lnr lnr-checkmark-circle"></i>
+            <h4>Freelance Available</h4>
+            <span class="lm-info-block-value"></span>
+            <span class="lm-info-block-text"></span>
+          </div>
+
+          <div class="lm-info-block gray-default">
+            <i class="lnr lnr-envelope"></i>
+            <h4><a [href]="'mailto:' + objPreference.email" class="__cf_email__"
+                data-cfemail="2948454c51694c51484459454c074a4644">[email&#160;protected]</a></h4>
+            <span class="lm-info-block-value"></span>
+            <span class="lm-info-block-text"></span>
+          </div>
+
+
+        </div>
+        <!-- End of Contact Info -->
+
+        <!-- Contact Form -->
+        <div class="col-xs-12 col-sm-8">
+          <div class="block-title">
+            <h3>How Can I <span>Help You?</span></h3>
+          </div>
+
+          <form #form="ngForm" id="contact_form" class="contact-form" (ngSubmit)="save(form)">
+
+            <div class="messages"></div>
+
+            <div class="controls two-columns">
+              <div class="fields clearfix">
+                <div class="left-column">
+                  <div class="form-group form-group-with-icon">
+                    <input id="form_name" type="text" name="name"  class="form-control"
+                      placeholder=""  required="required" [(ngModel)]="obj.name"  #name="ngModel" >
+                    <label [ngClass]="{'inputData':obj.name}" >Full Name</label>
+                    <div class="form-control-border"></div>
+                    <div class="help-block with-errors">
+                    </div>
+                  </div>
+
+                  <div class="form-group form-group-with-icon">
+                    <input id="form_email" type="email" name="email" class="form-control" [(ngModel)]="obj.email"
+                      placeholder="" required="required" data-error="Valid email is required." required >
+                    <label [ngClass]="{'inputData':obj.email}">Email Address</label>
+                    <div class="form-control-border"></div>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group form-group-with-icon">
+                    <input id="form_subject" type="text" name="subject" class="form-control"
+                     required="required" data-error="Subject is required."  required [(ngModel)]="obj.subject">
+                    <label class="form-group-focus" [ngClass]="{'inputData':obj.subject}" >Subject</label>
+                    <div class="form-control-border"></div>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <div class="right-column">
+                  <div class="form-group form-group-with-icon">
+                    <textarea id="form_message" name="message" class="form-control"
+                      placeholder="" rows="7" required="required" data-error="Please, leave me a message."
+                      required [(ngModel)]="obj.message"></textarea>
+                    <label [ngClass]="{'inputData':obj.message}" >Message</label>
+                    <div class="form-control-border"></div>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="g-recaptcha" data-sitekey="6LdqmCAUAAAAAMMNEZvn6g4W5e0or2sZmAVpxVqI" data-theme="dark"></div>
+
+              <input type="submit" class="button btn-send" value="Send message">
+
+            </div>
+          </form>
+        </div>
+        <!-- End of Contact Form -->
+      </div>
+
+    </div>
+  </section>
+  <!-- End of Contact Subpage -->

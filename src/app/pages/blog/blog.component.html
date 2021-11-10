@@ -13,17 +13,17 @@
                                             <div class="blog-card">
                                                 <div class="media-block">
                                                     <div class="category">
-                                                        <a href="#" title="View all posts in Design">{{item.title}}</a>
+                                                        <a [title]="item.title">{{item.title}}</a>
                                                     </div>
-                                                    <a href="blog-post-1.html">
-                                                        <img src="https://image.canon/st/images/index/icon-image-transfer.png" class="size-blog-masonry-image-two-c" alt="Why I Switched to Sketch For UI Design" title="" />
+                                                    <a>
+                                                        <img [src]="urlFiles + 'images/posts/' + item.image" class="size-blog-masonry-image-two-c" [alt]="item.title" title="" />
                                                         <div class="mask"></div>
                                                     </a>
                                                 </div>
                                                 <div class="post-info">
                                                     <div class="post-date">{{item.created_at | date}}</div>
-                                                    <a href="blog-post-1.html">
-                                                        <h4 class="blog-item-title">{{item.content}}</h4>
+                                                    <a [routerLink]="'/cv/post/' + item.id" >
+                                                        <h4 class="blog-item-title">{{item.content | slice:0:70}}...</h4>
                                                     </a>
                                                 </div>
                                             </div>
