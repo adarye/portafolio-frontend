@@ -1,6 +1,6 @@
 
-<div class="single-page-area">
-  <div class="single-page-content">
+<div class="section-cv">
+  <div class="section-content">
 
     <article class="post" *ngIf="obj">
 
@@ -59,9 +59,9 @@
           <!-- /Share Buttons -->
         </div>
 
-        <div class="post-tags" *ngIf="listCategories.length > 0">
-          <div class="tags">
-            <a href="#" rel="tag" *ngFor="let item of listCategories">{{item.name}}</a>
+        <div class="post-tags" *ngIf="listCategories.length > 0 ">
+          <div class="tags" >
+            <a routerLink="/cv/blog" [queryParams]="{idCategory: item.id}" rel="tag" *ngFor="let item of listCategories">{{item.name}}</a>
           </div>
         </div>
       </div>

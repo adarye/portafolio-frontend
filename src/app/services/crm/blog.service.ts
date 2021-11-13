@@ -22,8 +22,8 @@ export class BlogService {
     return this.http.post(url + 'posts-categories', obj);
   }
 
-  getPosts(page: number) {
-    return this.http.get<Paginate>(url + `posts?page=${page}`);
+  getPosts(page: number, idCategory:number = 0) {
+    return this.http.get<Paginate>(url + `posts?page=${page}&idCategory=${idCategory}`);
   }
   createPost(obj: Post) {
     return this.http.post(url + `posts`, obj);
