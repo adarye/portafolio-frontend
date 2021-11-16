@@ -1,7 +1,7 @@
 <header id="site_header" class="header" [ngClass]="mobile ? 'mobile-menu-hide' : ''">
     <div class="header-content">
         <div class="header-photo">
-            <img src="../../../assets/plugin-cv/img/main_photo.jpg" alt="Alex Smith">
+            <img [src]="urlFiles + 'images/user/user-principal.jpg'" alt="Alex Smith">
         </div>
         <div class="header-titles">
             <h2>{{obj.name}}</h2>
@@ -14,16 +14,16 @@
     <div class="social-links">
         <ul>
             <li><a [href]="obj.linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-            <li><a [href]="obj.facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a [href]="obj.facebook" target="_blank"><i class="fa fa-github"></i></a></li>
             <li><a [href]="obj.instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
         </ul>
     </div>
 
     <div class="header-buttons">
-        <a href="#" target="_blank" class="btn btn-primary">Download CV</a>
+        <a  target="_blank" class="btn btn-primary">Download CV</a>
     </div>
 
-    <div class="copyrights">© {{date | date: 'yyyy' }} All rights reserved.</div>
+    <!-- <div class="copyrights">© {{date | date: 'yyyy' }} All rights reserved.</div> -->
 </header>
 
 
@@ -36,7 +36,7 @@
 <!-- End Mobile Navigation -->
 <!-- Arrows Nav -->
 <div class="lmpixels-arrows-nav">
-    <div class="lmpixels-arrow-right"><i class="lnr lnr-chevron-right"></i></div>
-    <div class="lmpixels-arrow-left"><i class="lnr lnr-chevron-left"></i></div>
+    <div class="lmpixels-arrow-right" (click)="nextRoute()"><i class="lnr lnr-chevron-right"></i></div>
+    <div class="lmpixels-arrow-left" (click)="prevRoute()"><i class="lnr lnr-chevron-left"></i></div>
 </div>
 <!-- End Arrows Nav -->

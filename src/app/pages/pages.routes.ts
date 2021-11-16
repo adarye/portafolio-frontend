@@ -18,6 +18,7 @@ const PagesRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'post/:id', component: PostComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 
 ]
 
