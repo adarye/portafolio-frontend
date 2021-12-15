@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post';
@@ -15,8 +16,8 @@ export class BlogComponent implements OnInit {
   urlFiles = environment.urlFiles;
   listPosts:Post[] = [];
   idCategory:number;
-  constructor(private blogService:BlogService, private route: ActivatedRoute) {
-
+  constructor(private blogService:BlogService, private route: ActivatedRoute, private titleService: Title) {
+    this.titleService.setTitle('Blog');
    }
 
   ngOnInit(): void {

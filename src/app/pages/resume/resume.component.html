@@ -15,7 +15,7 @@
           <div class="timeline timeline-second-style clearfix">
             <div class="timeline-item clearfix" *ngFor="let resume of item.resumes" >
               <div class="left-part">
-                <h5 class="item-period">{{resume.beginning_date| date: 'yyyy'}}</h5>
+                <h5 class="item-period">{{resume.beginning_date| date: 'MMM, y'}} - {{resume.final_date | date:'MMM, y'}}<span *ngIf="!resume.final_date">Current</span></h5>
                 <span class="item-company">{{resume.place}}</span>
               </div>
               <div class="divider"></div>
@@ -68,14 +68,13 @@
         </div>
 
         <ul class="knowledges">
-          <li>Marketing</li>
-          <li>Print</li>
+          <li>Programming</li>
+          <li>Sql</li>
           <li>Digital Design</li>
-          <li>Social Media</li>
+          <li>Adobe XD</li>
           <li>Time Management</li>
           <li>Communication</li>
           <li>Problem-Solving</li>
-          <li>Social Networking</li>
           <li>Flexibility</li>
         </ul>
         <!-- End of Knowledges -->

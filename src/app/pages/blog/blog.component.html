@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" *ngIf="listPosts">
+                            <div class="row" *ngIf="listPosts.length < 1">
                                 <h5 *ngIf="idCategory"> No posts found in this category <a routerLink="/cv/blog" class="ml-2">See more</a></h5>
                                 <h5 *ngIf="!idCategory"> No posts found </h5>
                             </div>

@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { FunFactsService } from 'src/app/services/crm/fun-facts.service';
 import { Component, OnInit } from '@angular/core';
 import { Preferencia } from 'src/app/models/preferencia.model';
@@ -16,7 +17,7 @@ export class AboutMeComponent implements OnInit {
   listSkills:Skill[] = [];
   funFacts:FunFact[] = [];
 
-  constructor(private profileService:ProfileService, private skillsService:SkillsService, private funfactsService: FunFactsService) {
+  constructor(private profileService:ProfileService, private skillsService:SkillsService, private funfactsService: FunFactsService, private titleService: Title) {
     this.profileService.get().subscribe(res=>{
       this.obj = res;
     })
@@ -26,6 +27,7 @@ export class AboutMeComponent implements OnInit {
     this.funfactsService.get(1).subscribe(res=>{
       this.funFacts = res.data;
     })
+    this.titleService.setTitle('About me');
    }
 
   ngOnInit(): void {

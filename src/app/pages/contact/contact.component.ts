@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { ContactService } from './../../services/crm/contact.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -15,10 +16,11 @@ import { SnackbarService } from 'src/app/services/crm/snackbar.service';
 export class ContactComponent implements OnInit {
   obj: Contact = new Contact('', '', '', '');
   objPreference: Preferencia = {};
-  constructor(private profileService: ProfileService, private contactService:ContactService, private snackbarService:SnackbarService) {
+  constructor(private profileService: ProfileService, private contactService:ContactService, private snackbarService:SnackbarService, private titleService: Title) {
     this.profileService.get().subscribe(res => {
       this.objPreference = res;
     })
+    this.titleService.setTitle('Contact');
   }
 
   ngOnInit(): void {

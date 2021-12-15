@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BlogCategory } from 'src/app/models/blog-category';
@@ -17,7 +18,7 @@ obj:Post;
 listCategories:BlogCategory[]= [];
 urlFiles = environment.urlFiles;
 
-  constructor(private blogservice:BlogService, private route: ActivatedRoute) {
+  constructor(private blogservice:BlogService, private route: ActivatedRoute, private titleService:Title) {
 
    }
 
@@ -26,6 +27,7 @@ urlFiles = environment.urlFiles;
       this.id = +params.get('id');
       this.blogservice.showPost(this.id).subscribe(res=>{
         this.obj = res;
+        this.titleService.setTitle(res.title);
       })
       this.getCategories();
     });

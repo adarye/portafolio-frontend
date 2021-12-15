@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { CategoriesWithResumes } from 'src/app/models/categories-with-resume';
 import { CategoriesWithSkills } from 'src/app/models/categories-with-skills';
@@ -14,7 +15,7 @@ import { SkillsService } from 'src/app/services/crm/skills.service';
 export class ResumeComponent implements OnInit {
   listResume: CategoriesWithResumes[] = [];
   listSkills:CategoriesWithSkills[] = [];
-  constructor(private resumeService: ResumeService, private skillsService:SkillsService) {
+  constructor(private resumeService: ResumeService, private skillsService:SkillsService, private titleService: Title) {
     this.resumeService.getCategoriesWithResumes().subscribe(
       res => {
         this.listResume = res;
@@ -24,6 +25,7 @@ export class ResumeComponent implements OnInit {
         res => {
           this.listSkills = res;
         });
+        this.titleService.setTitle('Resume');
   }
   ngOnInit(): void {
   }

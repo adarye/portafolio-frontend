@@ -1,17 +1,26 @@
-<div class="container">
-    <form class="mt-4" ngNativeValidate #f="ngForm" (ngSubmit)="login(f)">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input ngModel name="email" type="email" class="form-control" required placeholder="Ingrese su email">
+<div class="container" style="background-image: url('../../../assets/plugin-cv/img/main_bg.png');">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form class="mt-5 shadow-lg p-3 mb-5 bg-white rounded" ngNativeValidate #f="ngForm" (ngSubmit)="login(f)">
+        <div class="card">
+          <div class="card-header bg-dark text-white">Login CRM</div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input ngModel name="email" type="email" class="form-control" required placeholder="Ingrese su email">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input ngModel name="password" type="password" class="form-control" placeholder="Ingrese su password"
+                required>
+            </div>
+
+            <button type="submit" class="btn btn-dark">Submit</button>
+            <a type="button" class="ml-2 btn btn-light">Back</a>
+          </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input ngModel name="password" type="password" class="form-control" placeholder="Ingrese su password" required>
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      </form>
+
+    </div>
+  </div>
 </div>
